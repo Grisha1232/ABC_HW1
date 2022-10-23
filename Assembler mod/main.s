@@ -69,7 +69,6 @@ main:
 .BodyOfTheFirstCycle:			# Body section of first cycle
 	lea	rdx, -448[rbp]			# taking A[] for input value
 	mov	eax, DWORD PTR -8[rbp]		# taking i
-	cdqe
 	sal	rax, 2
 	add	rdx, rax			# A[i]
 	
@@ -108,7 +107,6 @@ main:
 	
 .BodyOfTheSecondCycle:				# Body of the second cycle
 	mov	eax, DWORD PTR -8[rbp]		# taking i for taking B[i]	
-	cdqe
 	mov	edx, DWORD PTR -848[rbp+rax*4]	#
 	mov	rdi, QWORD PTR -40[rbp]
 	lea	rsi, .DigitWithSpace[rip]
@@ -178,11 +176,9 @@ main:
 	mov	edx, eax		#
 	
 	mov	eax, DWORD PTR -8[rbp]		# A[i] = rand() % 1000
-	cdqe					#
 	mov	DWORD PTR -448[rbp+rax*4], edx	#
 	
 	mov	eax, DWORD PTR -8[rbp]		# print result
-	cdqe					#
 	mov	edx, DWORD PTR -448[rbp+rax*4]	#
 	mov	esi, DWORD PTR -8[rbp]		#
 	lea	rdi, .LC9[rip]			# Set format
@@ -212,7 +208,6 @@ main:
 	
 	lea	rdx, -448[rbp]			# take A
 	mov	eax, DWORD PTR -8[rbp]		# take i
-	cdqe
 	sal	rax, 2
 	add	rax, rdx			# A[i]
 	mov	rsi, rax
@@ -267,7 +262,6 @@ main:
 	
 .BodyOfTheOutputCycle:		# body of the cycle
 	mov	eax, DWORD PTR -8[rbp]
-	cdqe
 	mov	eax, DWORD PTR -848[rbp+rax*4]
 	mov	esi, eax
 	lea	rax, .DigitWithSpace[rip]
