@@ -63,7 +63,7 @@ HomeWork assembler
 * [task.s](https://github.com/Grisha1232/ABC_HW1/blob/8d450683e05496c9b232887114519fa149bd5692/Assembler%20mod/MakeB.s)
 
 ### Итог:
-Переделан Assembler файл: добавлено сохранение в регистры переменных An и Bn, а также используется регистр для итерации по циклу. [Тестирование](https://github.com/Grisha1232/ABC_HW1/blob/980e164c5fc9897eb447115064ad927ad50d2def/Tests.md) показало идентичность работы C файла b Assembler сборки.
+Переделан Assembler файл: добавлено сохранение в регистры переменных An и Bn, а также используется регистр для итерации по циклу. [Тестирование](https://github.com/Grisha1232/ABC_HW1/blob/980e164c5fc9897eb447115064ad927ad50d2def/Tests.md) показало идентичность работы C файла и Assembler сборки.
 
 ## Задание на 7
 
@@ -90,6 +90,7 @@ HomeWork assembler
 
 >  gcc ./main.o MakeB.o -o source.exe 
 ```
-
+### Итог:
+Добавлен новый файл. [Тестирование](https://github.com/Grisha1232/ABC_HW1/blob/980e164c5fc9897eb447115064ad927ad50d2def/Tests.md) сборки двух файлов показало, что программа работает индентично С файлу. Также тестирование с [файлов](https://github.com/Grisha1232/ABC_HW1/blob/106693f41ee7d3aa33ce0d1321e7d445051da4e0/Code%20C%20modification/tests/input.txt) показало, что программа работает идентично консольному вводу
 
 ## Задание на 8
