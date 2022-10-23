@@ -69,7 +69,7 @@ HomeWork assembler
 
 Добавлен новый файл **[MakeB.c](https://github.com/Grisha1232/ABC_HW1/blob/5eb8b89f7a43c0678172010ffe32821a6cd6f881/Code%20C%20modification/MakeB.c)**, в котором хранится функция MakeB(int[], int, int*).
 Для сборки использовались комманды:
-``` Console
+```
 > gcc -masm=intel \                     
       -fno-asynchronous-unwind-tables \
       -fno-jump-tables \
