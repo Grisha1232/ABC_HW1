@@ -10,5 +10,5 @@
 **Получили результат в 1490,86 мс**
 # Тест 3
 ![image](https://user-images.githubusercontent.com/58052549/197391891-fd89c188-89c1-47b3-97a1-b3c310f177ec.png)
-![image](https://user-images.githubusercontent.com/58052549/197391990-c00309d1-750c-4391-b5e7-29402a16fb19.png)
+![image](https://user-images.githubusercontent.com/58052549/197392075-75e15f03-98f5-45b4-9b21-fede2eb90c54.png)
 **Получили результат в 1475,27 мс**
