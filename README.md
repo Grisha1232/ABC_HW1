@@ -31,4 +31,4 @@ HomeWork assembler
 
 **[Список модификаций](https://github.com/Grisha1232/ABC_HW1/blob/0479954046a9d354ebb5a970958cc839ca8e05a4/Mod.md)**
 
-**[Тестирование программы через консоль]**
+**[Тестирование программы через консоль](https://github.com/Grisha1232/ABC_HW1/blob/11f8f2bae719ae82b6c1085f6cc74448fef6fdb6/Tests.md)**
