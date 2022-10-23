@@ -52,7 +52,7 @@ HomeWork assembler
 * Комментарии описывающий все действия просиходимые на Assembly
 
 ### Итог:
-Переделан С файл: добавлена функция с параметрами. Assembler прокомментирован все действия и переменные в аналогичном С файле. [Тестиование]() показало что программы все еще работает идентично.
+Переделан С файл: добавлена функция с параметрами. Assembler прокомментирован все действия и переменные в аналогичном С файле. [Тестиование](https://github.com/Grisha1232/ABC_HW1/blob/980e164c5fc9897eb447115064ad927ad50d2def/Tests.md) показало что программы все еще работает идентично.
 
 ## Задание на 6
 **Использован регистр r12d для переменной i для итераций**
@@ -63,8 +63,33 @@ HomeWork assembler
 * [task.s](https://github.com/Grisha1232/ABC_HW1/blob/8d450683e05496c9b232887114519fa149bd5692/Assembler%20mod/MakeB.s)
 
 ### Итог:
-Переделан Assembler файл: добавлено сохранение в регистры переменных An и Bn, а также используется регистр для итерации по циклу. [Тестирование]() показало идентичность работы C файла b Assembler сборки.
+Переделан Assembler файл: добавлено сохранение в регистры переменных An и Bn, а также используется регистр для итерации по циклу. [Тестирование](https://github.com/Grisha1232/ABC_HW1/blob/980e164c5fc9897eb447115064ad927ad50d2def/Tests.md) показало идентичность работы C файла b Assembler сборки.
 
 ## Задание на 7
+
+Добавлен новый файл **[MakeB.c](https://github.com/Grisha1232/ABC_HW1/blob/5eb8b89f7a43c0678172010ffe32821a6cd6f881/Code%20C%20modification/MakeB.c)**, в котором хранится функция MakeB(int[], int, int*).
+Для сборки использовались комманды:
+``` Console
+> gcc -masm=intel \                     
+        -fno-asynchronous-unwind-tables \
+        -fno-jump-tables \
+        -fno-stack-protector \
+        -fno-exceptions \
+        ./main.c \
+        -S -o ./main.s
+>  gcc -masm=intel \                     
+        -fno-asynchronous-unwind-tables \
+        -fno-jump-tables \
+        -fno-stack-protector \
+        -fno-exceptions \
+        ./MakeB.c \
+        -S -o ./MakeB.s
+
+>  gcc ./main.s -c -o main.o 
+>  gcc ./MakeB.s -c -o MakeB.o 
+
+>  gcc ./main.o MakeB.o -o source.exe 
+```
+
 
 ## Задание на 8
