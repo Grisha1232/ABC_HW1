@@ -32,3 +32,20 @@ HomeWork assembler
 **[Список модификаций](https://github.com/Grisha1232/ABC_HW1/blob/0479954046a9d354ebb5a970958cc839ca8e05a4/Mod.md)**
 
 **[Тестирование программы через консоль](https://github.com/Grisha1232/ABC_HW1/blob/11f8f2bae719ae82b6c1085f6cc74448fef6fdb6/Tests.md)**
+
+## Задание на 5
+**Модифицированый С файл:**
+* [main.c](https://github.com/Grisha1232/ABC_HW1/blob/5eb8b89f7a43c0678172010ffe32821a6cd6f881/Code%20C%20modification/main.c)
+* [MakeB.c](https://github.com/Grisha1232/ABC_HW1/blob/5eb8b89f7a43c0678172010ffe32821a6cd6f881/Code%20C%20modification/MakeB.c)
+
+**Добавлено:**
+* Реализована функция с передачей параметров в нее
+
+**Модифицированый Assembler:**
+* [main.s](https://github.com/Grisha1232/ABC_HW1/blob/8d450683e05496c9b232887114519fa149bd5692/Assembler%20mod/main.s)
+* [task.s](https://github.com/Grisha1232/ABC_HW1/blob/8d450683e05496c9b232887114519fa149bd5692/Assembler%20mod/MakeB.s)
+
+**Добавлено:**
+* Комментарии описывающий все действия просиходимые на Assembly
+
+## Задание на 6
