@@ -62,7 +62,10 @@ mov esi, DWORD PTR -96[rbp+rax*4]
 - mov	rdi, rax
 + lea rdi, .LC3[rip]
 ```
-
+### Удалены cdqe
+```assembly
+cdqe
+```
 
 ### Вручную удалены строки, не влияющие на ход программы, в конце каждого файла
 ``` assembly
