@@ -38,17 +38,20 @@
 main:	
 	push	rbp				# Prologue
 	mov	rbp, rsp			# 
+	#push rbx
 	
-	sub	rsp, 896			# Reserve 896 byte
+	sub	rsp, 1024			# Reserve 1024 byte
 	
 	mov	DWORD PTR -884[rbp], edi	# Argc
 	mov	QWORD PTR -896[rbp], rsi	# Argv
 	
 	mov	DWORD PTR -852[rbp], 0		# An = 0;
+	mov	r13d, DWORD PTR -852[rbp]	# Saved An in register r13d
 	mov	DWORD PTR -4[rbp], 0		# Bn = 0;
+	mov	r14d, DWORD PTR -4[rbp]		# Saved Bn in register r14d
 	
 	cmp	DWORD PTR -884[rbp], 2		# Compare argc and 2
-	jne	.InputNotFile				# Jump if argc != 2 to InputNotFile
+	jne	.InputNotFile			# Jump if argc != 2 to InputNotFile
 	
 						# otherwise go to if section
 	lea	rsi, .Read[rip]			# path to the input file
@@ -63,12 +66,12 @@ main:
 	mov	eax, 0
 	call	fscanf@PLT			# fscanf (input from file) An
 	
-	mov	DWORD PTR -8[rbp], 0		# i = 0;
+	mov	r12d, 0				# i = 0;
 	jmp	.CycleForReadFromFile		# go to the Cycle
 	
 .BodyOfTheFirstCycle:			# Body section of first cycle
 	lea	rdx, -448[rbp]			# taking A[] for input value
-	mov	eax, DWORD PTR -8[rbp]		# taking i
+	mov	eax, r12d		# taking i
 	sal	rax, 2
 	add	rdx, rax			# A[i]
 	
@@ -77,11 +80,11 @@ main:
 	mov	eax, 0
 	call	fscanf@PLT			# fscanf (input from file) A[i]
 	
-	add	DWORD PTR -8[rbp], 1		# i++;
+	add	r12d, 1		# i++;
 	
 .CycleForReadFromFile:			# First Cycle
 	mov	eax, DWORD PTR -852[rbp]	# move An for compare
-	cmp	DWORD PTR -8[rbp], eax		# Compare i and An
+	cmp	r12d, eax		# Compare i and An
 	jl	.BodyOfTheFirstCycle		# if i < An the go to the body of the cycle
 	
 						# otherwise exit the cycle
@@ -101,21 +104,21 @@ main:
 	
 	mov	DWORD PTR -4[rbp], eax		# Bn = MakeB(...);
 	
-	mov	DWORD PTR -8[rbp], 0		# i = 0;
+	mov	r12d, 0		# i = 0;
 	jmp	.SecondCycleForOutputFile	# jump to the Cycle
 	
 	
 .BodyOfTheSecondCycle:				# Body of the second cycle
-	mov	eax, DWORD PTR -8[rbp]		# taking i for taking B[i]	
+	mov	eax, r12d			# taking i for taking B[i]	
 	mov	edx, DWORD PTR -848[rbp+rax*4]	#
 	mov	rdi, QWORD PTR -40[rbp]
 	lea	rsi, .DigitWithSpace[rip]
 	mov	eax, 0
 	call	fprintf@PLT
-	add	DWORD PTR -8[rbp], 1
+	add	r12d, 1				# i++
 	
 .SecondCycleForOutputFile:			# Cycle for output to file
-	mov	eax, DWORD PTR -8[rbp]		# mode i to register for compare
+	mov	eax, r12d			# mode i to register for compare
 	cmp	eax, DWORD PTR -4[rbp]		# Compare i and Bn
 	jl	.BodyOfTheSecondCycle		# if i < Bn go to the body of cycle
 	
@@ -159,8 +162,8 @@ main:
 	mov	edi, eax
 	call	srand@PLT
 	
-	mov	DWORD PTR -8[rbp], 0		# i = 0;
-	jmp	.RandomCycle		# go to the Cycle
+	mov	r12d, 0				# i = 0;
+	jmp	.RandomCycle			# go to the Cycle
 	
 .BodyOfTheRandomCycle:
 	call	rand@PLT		# rand()
@@ -175,39 +178,39 @@ main:
 	sub	eax, ecx		#
 	mov	edx, eax		#
 	
-	mov	eax, DWORD PTR -8[rbp]		# A[i] = rand() % 1000
+	mov	eax, r12d		# A[i] = rand() % 1000
 	mov	DWORD PTR -448[rbp+rax*4], edx	#
 	
-	mov	eax, DWORD PTR -8[rbp]		# print result
+	mov	eax, r12d			# print result
 	mov	edx, DWORD PTR -448[rbp+rax*4]	#
-	mov	esi, DWORD PTR -8[rbp]		#
+	mov	esi, r12d			#
 	lea	rdi, .LC9[rip]			# Set format
 	mov	eax, 0				#
 	call	printf@PLT			# print message
 	
 	
-	add	DWORD PTR -8[rbp], 1		# i++
+	add	r12d, 1			# i++
 	
-.RandomCycle:			# Cycle for randomize A[]
+.RandomCycle:				#Cycle for randomize A[]
 	mov	eax, DWORD PTR -852[rbp]	# move An to register for compare
-	cmp	DWORD PTR -8[rbp], eax		# Compare i and An
+	cmp	r12d, eax		# Compare i and An
 	jl	.BodyOfTheRandomCycle		# if i < An go to the body
 	
 						# othewise exit the cycle
 	jmp	.CalculateTime			# go to calculate time
 	
 .NotRandom:					# input A[] if not random
-	mov	DWORD PTR -8[rbp], 0		# i = 0;
+	mov	r12d, 0		# i = 0;
 	jmp	.NotRandomCycle
 	
 .BodyOfTheNotRandomCycle:			# body of the cycle
-	mov	esi, DWORD PTR -8[rbp]		# taking i for taking A[i]
+	mov	esi, r12d		# taking i for taking A[i]
 	lea	rdi, .OutputAinConsole[rip]	# Set Format for output tip message
 	mov	eax, 0
 	call	printf@PLT			# print tip message A[i] = 
 	
 	lea	rdx, -448[rbp]			# take A
-	mov	eax, DWORD PTR -8[rbp]		# take i
+	mov	eax, r12d			# take i
 	sal	rax, 2
 	add	rax, rdx			# A[i]
 	mov	rsi, rax
@@ -215,17 +218,17 @@ main:
 	mov	eax, 0
 	call	scanf@PLT			# scanf A[i]
 	
-	add	DWORD PTR -8[rbp], 1		# i++;
+	add	r12d, 1				# i++;
 	
 .NotRandomCycle:				# input A[] in cycle
 	mov	eax, DWORD PTR -852[rbp]	# move An to register for compare
-	cmp	DWORD PTR -8[rbp], eax		# Compare i and An
+	cmp	r12d, eax			# Compare i and An
 	jl	.BodyOfTheNotRandomCycle	# if i < An then go to the body
 	
 .CalculateTime:			# Section for campute time 
 	call	clock@PLT	
 	mov	QWORD PTR -16[rbp], rax
-	mov	DWORD PTR -8[rbp], 0
+	mov	r12d, 0
 	jmp	.TakeTimeCycle		# jump to the TakeTimeCycle
 	
 .BodyOfTheTakeTimeCycle:		# body of the cycle
@@ -235,11 +238,11 @@ main:
 	
 	call	MakeB@PLT			# call func with arguments
 	mov	DWORD PTR -4[rbp], eax		# Save Bn = MakeB;
-	add	DWORD PTR -8[rbp], 1		# i++
+	add	r12d, 1				# i++
 	
 
 .TakeTimeCycle:			# Calculate time execute
-	cmp	DWORD PTR -8[rbp], 4999999 	# Compare i and 5000000
+	cmp	r12d, 4999999 	# Compare i and 5000000
 	jle	.BodyOfTheTakeTimeCycle		# if i <= 4999999 go to the body
 	
 						# otherwise exit the cycle
@@ -257,20 +260,20 @@ main:
 	mov	eax, 1
 	call	printf@PLT			# print message
 	
-	mov	DWORD PTR -8[rbp], 0		# i = 0
+	mov	r12d, 0		# i = 0
 	jmp	.OutputCycle			# jump to the output Cycle
 	
 .BodyOfTheOutputCycle:		# body of the cycle
-	mov	eax, DWORD PTR -8[rbp]
+	mov	eax, r12d
 	mov	eax, DWORD PTR -848[rbp+rax*4]
 	mov	esi, eax
 	lea	rax, .DigitWithSpace[rip]
 	mov	rdi, rax
 	mov	eax, 0
 	call	printf@PLT
-	add	DWORD PTR -8[rbp], 1
+	add	r12d, 1
 .OutputCycle:
-	mov	eax, DWORD PTR -8[rbp]	# move i to the register fro compare
+	mov	eax, r12d	# move i to the register fro compare
 	cmp	eax, DWORD PTR -4[rbp]	# compare i and Bn
 	jl	.BodyOfTheOutputCycle	# if i < Bn the go to the body
 					# otherwise exit the cycle
