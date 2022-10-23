@@ -22,12 +22,6 @@
 ```
 
 ``` assembly
-# mov	eax, DWORD PTR -96[rbp+rax*4]
-# mov	esi, eax
-mov esi, DWORD PTR -96[rbp+rax*4]
-```
-
-``` assembly
 - mov	eax, DWORD PTR -4[rbp]
 - mov	esi, eax
 + mov esi, DWORD PTR --4[rbp]
