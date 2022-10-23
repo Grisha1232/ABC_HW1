@@ -71,19 +71,19 @@ HomeWork assembler
 Для сборки использовались комманды:
 ``` Console
 > gcc -masm=intel \                     
-        -fno-asynchronous-unwind-tables \
-        -fno-jump-tables \
-        -fno-stack-protector \
-        -fno-exceptions \
-        ./main.c \
-        -S -o ./main.s
+      -fno-asynchronous-unwind-tables \
+      -fno-jump-tables \
+      -fno-stack-protector \
+      -fno-exceptions \
+      ./main.c \
+      -S -o ./main.s
 >  gcc -masm=intel \                     
-        -fno-asynchronous-unwind-tables \
-        -fno-jump-tables \
-        -fno-stack-protector \
-        -fno-exceptions \
-        ./MakeB.c \
-        -S -o ./MakeB.s
+       -fno-asynchronous-unwind-tables \
+       -fno-jump-tables \
+       -fno-stack-protector \
+       -fno-exceptions \
+       ./MakeB.c \
+       -S -o ./MakeB.s
 
 >  gcc ./main.s -c -o main.o 
 >  gcc ./MakeB.s -c -o MakeB.o 
