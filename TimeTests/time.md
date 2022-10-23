@@ -9,6 +9,6 @@
 ![image](https://user-images.githubusercontent.com/58052549/197391901-e003c205-657f-45ff-9ab1-99be3768ef56.png)  
 **Получили результат в 1490,86 мс**
 # Тест 3
-![image](https://user-images.githubusercontent.com/58052549/197391891-fd89c188-89c1-47b3-97a1-b3c310f177ec.png)
+![image](https://user-images.githubusercontent.com/58052549/197392205-d5f06996-3dc3-43f5-88cb-aafcb81d8d8c.png)
 ![image](https://user-images.githubusercontent.com/58052549/197392075-75e15f03-98f5-45b4-9b21-fede2eb90c54.png)  
 **Получили результат в 1475,27 мс**
